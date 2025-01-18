@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+
+int sumNaive(const vector<int>& numbers) {
+    int total = 0;
+    for (int num : numbers) {
+        total += num;
+    }
+    return total;
+}
+
+int sumRecursive(const vector<int>& numbers, int index) {
+    if (index < 0) { // Base case: no elements left
+        return 0;
+    }
+    return numbers[index] + sumRecursive(numbers, index - 1);
+}
+
+int sumBuiltin(const vector<int>& numbers) {
+    return accumulate(numbers.begin(), numbers.end(), 0);
+}
+
+int main() {
+    vector<int> numbers;
+    int n, input;
+    
+    cout << "Enter the number of integers: ";
+    cin >> n;
+    cout << "Enter the integers: ";
+    for (int i = 0; i < n; ++i) {
+        cin >> input;
+        numbers.push_back(input);
+    }
+    int naiveResult = sumNaive(numbers);
+    int recursiveResult = sumRecursive(numbers, numbers.size() - 1);
+    int builtinResult = sumBuiltin(numbers);
+    
+    cout << "Naive Approach Sum: " << naiveResult << endl;
+    cout << "Recursive Approach Sum: " << recursiveResult << endl;
+    cout << "Built-in Function Sum: " << builtinResult << endl;
+    
+    return 0;
+}
