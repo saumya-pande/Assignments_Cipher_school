@@ -1,0 +1,4 @@
+Time Complexities 
+Naiive approach -> O(n)
+Recursive approach -> O(n)
+built - in function -> O(n)
